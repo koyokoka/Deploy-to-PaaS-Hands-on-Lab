@@ -58,6 +58,27 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			    <plugin> 
+    <groupId>com.microsoft.azure</groupId>  
+    <artifactId>azure-webapp-maven-plugin</artifactId>  
+    <version>2.7.0</version>  
+    <configuration>
+      <subscriptionId>bfb13742-5be0-47c2-8469-03697bba3b42</subscriptionId>
+      <resourceGroup>WS20221207</resourceGroup>
+      <appName>app-ws20221207</appName>
+      <deployment>
+      <resources>
+        <resource>
+        <type>jar</type>
+        <directory>${project.basedir}/target</directory>
+        <includes>
+          <include>*.jar</include>
+        </includes>
+        </resource>
+      </resources>
+      </deployment>
+    </configuration>
+   </plugin>
 		</plugins>
 	</build>
 

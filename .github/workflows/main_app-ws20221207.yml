@@ -4,10 +4,10 @@
 name: Build and deploy JAR app to Azure Web App - app-ws20221207
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+
+env:
+  APP_PATH: 'src/Java/webapp-java'
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
         run: mvn clean install
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: java-app
           path: '${{ github.workspace }}/target/*.jar'
@@ -39,7 +39,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: java-app
 
